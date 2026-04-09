@@ -19,10 +19,8 @@ export default function RightPanel({
   nodes,
   clusterMap,
   influenceSource,
-  setInfluenceSource,
   influenceK,
   setInfluenceK,
-  influenceMap,
 }) {
   const content = conceptText[activeStep];
 
@@ -197,25 +195,31 @@ export default function RightPanel({
         )}
 
         <div className="nav-row">
-          <button
-            className="secondary-btn"
-            onClick={() => {
-              const idx = STEPS.indexOf(activeStep);
-              if (idx > 0) onChangeStep(STEPS[idx - 1]);
-            }}
-          >
-            ← Previous
-          </button>
+          {STEPS.indexOf(activeStep) > 0 ? (
+            <button
+              className="secondary-btn"
+              onClick={() => {
+                const idx = STEPS.indexOf(activeStep);
+                if (idx > 0) onChangeStep(STEPS[idx - 1]);
+              }}
+            >
+              ← Previous
+            </button>
+          ) : (
+            <div />
+          )}
 
-          <button
-            className="primary-btn"
-            onClick={() => {
-              const idx = STEPS.indexOf(activeStep);
-              if (idx < STEPS.length - 1) onChangeStep(STEPS[idx + 1]);
-            }}
-          >
-            Next →
-          </button>
+          {STEPS.indexOf(activeStep) < STEPS.length - 1 ? (
+            <button
+              className="primary-btn"
+              onClick={() => {
+                const idx = STEPS.indexOf(activeStep);
+                if (idx < STEPS.length - 1) onChangeStep(STEPS[idx + 1]);
+              }}
+            >
+              Next →
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
