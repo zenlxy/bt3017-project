@@ -319,7 +319,6 @@ export function useGraph() {
                 // cluster 1 (star-ish, center n6)
                 { source: "n6", target: "n2" },
                 { source: "n6", target: "n3" },
-                { source: "n6", target: "n4" },
                 { source: "n6", target: "n5" },
                 { source: "n1", target: "n2" },
                 { source: "n4", target: "n5" },

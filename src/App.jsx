@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GraphCanvas from "./components/GraphCanvas";
 import ControlToolbar from "./components/ControlToolbar";
 import RightPanel from "./components/RightPanel";
@@ -38,7 +38,17 @@ export default function App() {
 
   const [activeStep, setActiveStep] = useState("Basics");
 
+  useEffect(() => {
+    if (activeStep === "Lᵏ Influence") {
+      setToolMode("select");
+    } else {
+      setToolMode("add-node");
+    }
+  }, [activeStep, setToolMode]);
+
   const handleCanvasClick = (x, y) => {
+    if (activeStep === "Lᵏ Influence") return;
+  
     if (toolMode === "add-node") {
       addNode(x, y);
     }
@@ -106,7 +116,7 @@ export default function App() {
           clusterCount={clusterCount}
           showClusters={showClusters}
           setShowClusters={setShowClusters}
-          nodeLabels={nodes.map((n) => n.label)}
+          nodeLabels={nodeLabels}
           nodes={nodes}
           influenceSource={influenceSource}
           setInfluenceSource={setInfluenceSource}

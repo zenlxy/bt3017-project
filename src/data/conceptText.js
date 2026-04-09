@@ -58,10 +58,10 @@ export const conceptText = {
   
     "Lᵏ Influence": {
       title: "Lᵏ Influence Explorer",
-      body: "This step explores how the influence of a node expands across the graph as k increases.",
+      body: "Select a node to see how its influence spreads through the graph as k increases.",
       bullets: [
-        "L captures local structure.",
-        "Higher powers like L² and L³ spread farther across the graph.",
+        "L reflects how each node is connected to its neighbours.",
+        "Raising L to higher powers (L², L³, ...) captures influence over longer paths.",
         "This helps motivate graph convolution ideas.",
       ],
       showTryCard: false,

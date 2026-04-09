@@ -277,7 +277,7 @@ export default function GraphCanvas({
             fontSize="20"
             fontWeight="600"
           >
-            Click "Add Node" and then click on the canvas to start building your graph
+            Click to add nodes or load a preset
           </text>
         )}
       </svg>
