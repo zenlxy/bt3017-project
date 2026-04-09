@@ -41,10 +41,18 @@ export default function App() {
   useEffect(() => {
     if (activeStep === "Lᵏ Influence") {
       setToolMode("select");
-    } else {
-      setToolMode("add-node");
     }
   }, [activeStep, setToolMode]);
+
+  const handleStepChange = (nextStep) => {
+    if (activeStep === "Lᵏ Influence" && nextStep !== "Lᵏ Influence") {
+      setToolMode("add-node");
+    } else if (nextStep === "Lᵏ Influence") {
+      setToolMode("select");
+    }
+  
+    setActiveStep(nextStep);
+  };
 
   const handleCanvasClick = (x, y) => {
     if (activeStep === "Lᵏ Influence") return;
@@ -73,7 +81,7 @@ export default function App() {
           <h1>Graph Spectral Clustering</h1>
         </div>
 
-        <StepProgress activeStep={activeStep} onChangeStep={setActiveStep} />
+        <StepProgress activeStep={activeStep} onChangeStep={handleStepChange} />
       </header>
 
       <main className="workspace">
@@ -106,7 +114,7 @@ export default function App() {
         <section className="info-panel">
         <RightPanel
           activeStep={activeStep}
-          onChangeStep={setActiveStep}
+          onChangeStep={handleStepChange}
           adjacencyMatrix={adjacencyMatrix}
           degreeMatrix={degreeMatrix}
           laplacianMatrix={laplacianMatrix}
