@@ -111,6 +111,7 @@ export default function App() {
             influenceSource={influenceSource}
             influenceMap={influenceMap}
             showInfluence={activeStep === "Lᵏ Influence"}
+            activeStep={activeStep}
           />
         </section>
 

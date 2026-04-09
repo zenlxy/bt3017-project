@@ -16,6 +16,7 @@ export default function GraphCanvas({
   influenceSource,
   influenceMap,
   showInfluence,
+  activeStep,
 }) {
   const svgRef = useRef(null);
   const [dragging, setDragging] = useState(null);
@@ -277,7 +278,9 @@ export default function GraphCanvas({
             fontSize="20"
             fontWeight="600"
           >
-            Click to add nodes or load a preset
+            {activeStep === "Lᵏ Influence"
+              ? "Go to earlier steps to start creating your graph"
+              : "Click to add nodes or load a preset"}
           </text>
         )}
       </svg>
