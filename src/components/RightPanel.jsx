@@ -287,7 +287,7 @@ export default function RightPanel({
                   className="cluster-action-btn"
                   onClick={() => setShowClusters((prev) => !prev)}
                 >
-                  {showClusters ? "Hide Clusters" : "Color Clusters"}
+                  {showClusters ? "Hide Clusters" : "Colour Clusters"}
                 </button>
               </div>
 
