@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MatrixView from "./MatrixView";
 import { STEPS } from "../lib/constants";
 import { conceptText } from "../data/conceptText";
@@ -30,6 +30,7 @@ export default function RightPanel({
 }) {
 
   const content = conceptText[activeStep];
+  const panelContentRef = useRef(null);
 
   const [quiz, setQuiz] = useState(null);
   const [quizLoading, setQuizLoading] = useState(false);
@@ -170,6 +171,15 @@ export default function RightPanel({
   quiz &&
   quiz.questions.every((_, index) => selectedAnswers[index] !== undefined);
 
+  useEffect(() => {
+    if (panelContentRef.current) {
+      panelContentRef.current.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [activeStep]);
+
   return (
     <div className="right-panel-light">
       <div className="tabs-light">
@@ -184,7 +194,7 @@ export default function RightPanel({
         ))}
       </div>
 
-      <div className="right-panel-content">
+      <div className="right-panel-content" ref={panelContentRef}>
         <div className="content-card">
           <h2>{content.title}</h2>
           <p>{content.body}</p>
